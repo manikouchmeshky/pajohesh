@@ -67,6 +67,16 @@ print(data)
 x=data[:,0:8]
 y=data[:,8]
 from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(x, y, train_size=0.7)
+X_train, X_test, y_train, y_test = train_test_split(x, y)
+
+# from sklearn.tree import DecisionTreeRegressor
+# tree = DecisionTreeRegressor().fit(X_train,y_train)
+#
 
 
+from sklearn.tree import DecisionTreeClassifier
+dtree = DecisionTreeClassifier()
+dtree = dtree.fit(X_train,y_train)
+
+print("Training set accuracy: {:.3f}".format(dtree.score(X_train, y_train)))
+print("Test set accuracy: {:.3f}".format(dtree.score(X_test, y_test)))
